@@ -25,33 +25,11 @@ export default defineConfig({
       ]
   },
 
-  output: 'hybrid',
+  output: 'server',
 
   adapter: cloudflare({
     platformProxy: {
       enabled: true
     }
   }),
-  vite: {
-    ssr: {
-      external: [ // there has to be a better way of doing this
-        "url", 
-        "events", 
-        "util", 
-        "net", 
-        "dns", 
-        "crypto", 
-        "fs", 
-        "os", 
-        "child_process",
-        "http",
-        "https",
-        "zlib",
-        "stream",
-        "path",
-        "tls"
-    ],
-      noExternal : "disable",
-    }
-  }
 });
