@@ -7,6 +7,7 @@
 
 :root {
 	--accent: rgb(72, 78, 141);
+	--accent-bright: rgb(92, 95, 134);
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
@@ -89,7 +90,8 @@ a {
 	color: var(--accent);
 }
 a:hover {
-	color: var(--accent);
+	color: var(--accent-bright);
+	text-decoration-line: underline;
 }
 p {
 	color: var(--text-colour);

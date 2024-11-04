@@ -7,14 +7,25 @@ import tailwind from '@astrojs/tailwind';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
+import node from '@astrojs/node';
+
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://example.com',
-    integrations: [mdx(), sitemap(), tailwind()],
-    markdown:{
-        remarkPlugins: [remarkMath],
-        rehypePlugins: [
-            rehypeKatex,
-        ]
-    }
+  site: 'https://example.com',
+  integrations: [mdx(), sitemap(), tailwind(), react()],
+
+  markdown:{
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [
+          rehypeKatex,
+      ]
+  },
+
+  output: 'hybrid',
+
+  adapter: node({
+    mode: 'standalone'
+  })
 });
