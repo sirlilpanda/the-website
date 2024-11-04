@@ -15,7 +15,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://sirlilpanda.studio',
   integrations: [mdx(), sitemap(), tailwind(), react()],
 
   markdown:{
@@ -27,5 +27,31 @@ export default defineConfig({
 
   output: 'hybrid',
 
-  adapter: cloudflare()
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true
+    }
+  }),
+  vite: {
+    ssr: {
+      external: [ // there has to be a better way of doing this
+        "url", 
+        "events", 
+        "util", 
+        "net", 
+        "dns", 
+        "crypto", 
+        "fs", 
+        "os", 
+        "child_process",
+        "http",
+        "https",
+        "zlib",
+        "stream",
+        "path",
+        "tls"
+    ],
+      noExternal : "disable",
+    }
+  }
 });
