@@ -13,6 +13,10 @@ The following HTML `<h1>`—`<h6>` elements represent six levels of section head
 
 # H1
 
+$$
+x = \frac{1}{2}
+$$
+
 ## H2
 
 ### H3
