@@ -11,6 +11,8 @@ import node from '@astrojs/node';
 
 import react from '@astrojs/react';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
@@ -25,7 +27,5 @@ export default defineConfig({
 
   output: 'hybrid',
 
-  adapter: node({
-    mode: 'standalone'
-  })
+  adapter: cloudflare()
 });
