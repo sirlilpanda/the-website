@@ -1,26 +1,141 @@
 ---
+export const prerender = false;
 
+type formData = {
+  subject: string;
+  email: string;
+  message: string;
+};
+
+if (Astro.request.method === "POST") {
+  try {
+    const formData = await Astro.request.formData();
+
+	console.log("data:")
+    console.log(formData);
+	const subject = formData.get("subject");
+	const email = formData.get("email");
+	const message = formData.get("message"); // Validate the data - making sure values are not empty
+	console.log(
+	JSON.stringify({
+			subject : subject,
+			email : email,
+			message : message,
+		})
+	)
+    const response = await fetch(Astro.url + "/api/sendEmail.json", {
+      	method: "POST",
+		headers: {
+				"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			subject : subject,
+			email : email,
+			message : message,
+		}),
+    });
+
+	// this line is erroring
+    const data: formData = await response.json();
+
+	if (response.status === 200) {
+    	console.log(data.message);
+    } else {
+		console.log(data.message)
+	}
+  } catch (error) {
+	console.log(`got error ${error}`)
+    if (error instanceof Error) {
+      console.error(`Error: ${error.message}`);
+    }
+  }
+}
 ---
-
-<form onsubmit="{handleSubmit}">
-    <div>
-        <input type="text" required name="name" placeholder="Name" />
+<h1 class="text-center text-3xl xl:text-5xl">Or just send me an Email here:</h1>
+<form class="email_form" method="post">
+    <div class="input_div">
+      <label class="email_label"for="send-email__sender" >Sent From:</label>
+      <input autocomplete="email" class="email_input" type="email" name="email" id="send-email__sender" required placeholder="Email"/>
+    </div>
+    <div class="input_div">
+      <label for="send-email__subject">Subject:</label>
+      <input type="text" name="subject" id="send-email__subject" required placeholder="subject" spellcheck="true"/>
     </div>
     <div>
-        <input type="email" required name="email" placeholder="Email" />
+      <label for="send-email__message">Message:</label>
+      <textarea name="message" id="send-email__message" required placeholder="write your text here" spellcheck="true"></textarea>
     </div>
-    <div>
-        <textarea required name="message" placeholder="Message"></textarea>
-    </div>
-    <div class="color">
-        <button type="submit" >Send</button>
-    </div>
+    <input class="submit_button" type="submit" value="Send message" />
 </form>
 
-<script is:inline>
 
-function handleSubmit(e){
+<style>
+	textarea {
+		height: 300px;
+	}
+
+	textarea,
+	input {
+		grid-column: 1;
+		padding-right: 5px;
+		padding-left: 10px;
+		padding-top: 2.5px;
+		padding-bottom: 2.5px;
+		background-color: #27272a;
+		border-radius: 10px;
+		border-style: solid;
+		border-color: var(--text-colour);
+		border: thick;
+	}
+	textarea,
+	input.active {
+	}
+
+	.input_div {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.email_form {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.submit_button {
+		margin-top: 10px;
+		padding: 10px;
+	}
+
+	.submit_button:hover {
+		text-decoration: underline;
+	}
+
+	input {
+		width: max-content;
+		float: right;
+	}
+
+	.email_label:has(+ .email_input:invalid) {
+		color: var(--title-colour);
+	}
+
+	.email_label:has(~ .email_input:invalid) {
+		color: var(--title-colour);
+	}
+
+	.email_label:has(~ .email_input:valid) {
+		color: rgb(137, 251, 137);
+	}
+
+	.email_label:has(~ .email_input:invalid)::after {
+		content: "email invaild";
+		padding-left: 40px;
+	}
+
+	.email_label:has(~ .email_input:valid)::after {
+		content: "email vaild";
+		padding-left: 40px;
+	}
 
 
-    }
-</script>
+</style>
