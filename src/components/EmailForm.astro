@@ -87,8 +87,11 @@ if (Astro.request.method === "POST") {
 		border-color: var(--text-colour);
 		border: thick;
 	}
+
+
 	textarea,
-	input.active {
+	input:focus {
+		border-color: var(--title-colour);
 	}
 
 	.input_div {
@@ -108,6 +111,8 @@ if (Astro.request.method === "POST") {
 
 	.submit_button:hover {
 		text-decoration: underline;
+		background: rgb(137, 251, 137);
+		color: var(--background)
 	}
 
 	input {
@@ -115,24 +120,22 @@ if (Astro.request.method === "POST") {
 		float: right;
 	}
 
-	.email_label:has(+ .email_input:invalid) {
-		color: var(--title-colour);
-	}
-
-	.email_label:has(~ .email_input:invalid) {
-		color: var(--title-colour);
+	/* .email_label:has(~ .email_input:invalid) {
+		color: #e11d48;
 	}
 
 	.email_label:has(~ .email_input:valid) {
 		color: rgb(137, 251, 137);
-	}
+	} */
 
 	.email_label:has(~ .email_input:invalid)::after {
+		color: #e11d48;
 		content: "email invaild";
-		padding-left: 40px;
+		padding-left: 34px;
 	}
 
 	.email_label:has(~ .email_input:valid)::after {
+		color: rgb(137, 251, 137);
 		content: "email vaild";
 		padding-left: 40px;
 	}
