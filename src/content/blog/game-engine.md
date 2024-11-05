@@ -1,7 +1,7 @@
 ---
 title: 'game engine'
 description: 'a little game engine i started to write after learning how GPUs actually work'
-pubDate: 'Jul 08 2022'
+pubDate: 'Jun 27 2024'
 heroImage: '/game_engine.png'
 ---
 
@@ -95,28 +95,28 @@ The 3x3 matrix type implements most of the common operations, such as identity, 
 ### Matrix multiplication
 Lets start out with the bread and butter of a matrix math library, the most common operation and therefor the one that needs to be the fastest. Most implementation of this rely on the matrix already being separated in to rows/col for easy indexing for calculating the dot product like seen in the zig mach engine, but as my matrix only has one vector, this wasn’t going work. Therefor after some thinking my idea was to compute the all the multiplication and additions of the dot products in one go, this technique would allow the code to use larger SIMD vector like seen in SSE4 which my cpu supports (no I did not know this at the time).
 So the first step of the matrix mul is to compute the dot product of each row vector from matrix A and with each col vector from matrix B, if it is within the form of
-
+$$
 C = A*B
-
-Now if we look at the first item of C i.e. C0, 0:
+$$
+Now if we look at the first item of C i.e. C0, 0
 
 C[0,0]=A[0,0]B[0,0]+A[0,1]B[1,0]+A[0,2]B[0,2]+A[0,3]B[0,3]
 
-And if we look at C1, 0:
+And if we look at C1, 0: :
 C[1,0]=A[1,0]B[0,0]+A[1,1]B[1,0]+A[1,2]B[0,2]+A[1,3]B[0,3]
 
 We can see that the elements of B do not change, so to calculate the first col of C we can copy B 4 times for each row of A which if we write it out in a slight nicer method, and by method I mean using a table:
 
-|           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |
-| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| A[0, 0]   | A[0, 1]   | A[0, 2]   | A[0, 3]   | A[1, 0]   | A[1, 1]   | A[1, 2]   | A[1, 3]   | A[2, 0]   | A[2, 1]   | A[2, 2]   | A[2, 3]   | A[3, 0]   | A[3, 1]   | A[3, 2]   | A[3, 3]   |
-| B[0, 0]   | B[0, 1]   | B[0, 2]   | B[0, 3]   | B[0, 0]   | B[0, 1]   | B[0, 2]   | B[0, 3]   | B[0, 0]   | B[0, 1]   | B[0, 2]   | B[0, 3]   | B[0, 0]   | B[0, 1]   | B[0, 2]   | B[0, 3]   |
-| C[0,0]_0 | C[0,0]_1 | C[0,0]_2 | C[0,0]_3 | C[1,0]_0 | C[1,0]_1 | C[1,0]_2 | C[1,0]_3 | C[2,0]_0 | C[2,0]_1 | C[2,0]_2 | C[2,0]_3 | C[3,0]_0 | C[3,0]_1 | C[3,0]_2 | C[3,0]_3 |
-
+| reg[0]    | reg[1]    | reg[2]    | reg[3]    | reg[4]    | ... |
+| --------- | --------- | --------- | --------- | --------- | --- |
+| A[0, 0]   | A[0, 1]   | A[0, 2]   | A[0, 3]   | A[1, 0]   | ... |
+| B[0, 0]   | B[0, 1]   | B[0, 2]   | B[0, 3]   | B[0, 0]   | ... |
+| C[0,0]_0  | C[0,0]_1  | C[0,0]_2  | C[0,0]_3  | C[1,0]_0  | ... |
 
 And the dot product of the C at the index [i, j] being the:
-
+$$
 C\left[i,j\right]=\Sigma C\left[i,j\right]_w
+$$
 
 Or rewriting it in the form as before:
 C[0,0]=A[0,0]B[0,0]+A[0,1]B[1,0]+A[0,2]B[0,2]+A[0,3]B[0,3] = C[0,0]<sub>0</sub> + C[0,0]<sub>1</sub> + C[0,0]<sub>2</sub> + C[0,0]<sub>3</sub> 

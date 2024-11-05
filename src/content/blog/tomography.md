@@ -1,7 +1,7 @@
 ---
 title: 'tomography Reconstruction '
 description: 'a report i did for a advanced signal processing coruse'
-pubDate: 'Jul 08 2022'
+pubDate: 'Feb 05 2024'
 heroImage: '/tomography.png'
 ---
 # Introduction

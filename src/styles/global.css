@@ -22,6 +22,7 @@
 	0 16px 32px rgba(var(--gray), 33%);
 	background-color: var(--background);
 	color: var(--text-colour);
+
 }
 @font-face {
 	font-family: 'Atkinson';
@@ -38,10 +39,10 @@
 	font-display: swap;
 }
 body {
-	font-family: 'Atkinson', sans-serif;
+	font-family: 'Courier New', Courier, monospace;
+	/* font-family: 'Atkinson', sans-serif; */
 	margin: 0;
 	padding: 0;
-	text-align: left;
 	background: linear-gradient(var(--gray-gradient)) no-repeat;
 	background-size: 100% 600px;
 	word-wrap: break-word;
@@ -50,9 +51,10 @@ body {
 	font-size: 20px;
 	line-height: 1.7;
 	background: #101010;
+	text-align: justify;
 }
 main {
-	width: 720px;
+	width: 800px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
@@ -63,6 +65,7 @@ h3,
 h4,
 h5,
 h6 {
+	text-align: left;
 	margin: 0 0 0.5rem 0;
 	color: var(--header-colour);
 	line-height: 1.2;
@@ -96,6 +99,7 @@ a:hover {
 p {
 	color: var(--text-colour);
 	margin-bottom: 1em;
+	font-size: 1em;
 }
 .prose p {
 	margin-bottom: 2em;

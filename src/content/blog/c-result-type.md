@@ -1,7 +1,7 @@
 ---
 title: 'c result type'
 description: 'a fun little pre processor macro for adding rust type errors in to c'
-pubDate: 'Jul 08 2022'
+pubDate: 'Feb 29 2024'
 heroImage: '/c_result_type.png'
 ---
 

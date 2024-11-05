@@ -1,7 +1,7 @@
 ---
 title: 'micro soldering'
 description: 'A challange PCB i solder, filled with what was the worlds smallest capacitors'
-pubDate: 'Jul 08 2022'
+pubDate: 'Feb 10 2023'
 heroImage: '/usmd.png'
 ---
 

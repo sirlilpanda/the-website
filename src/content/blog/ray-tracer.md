@@ -1,7 +1,7 @@
 ---
 title: 'ray tracer'
 description: 'a report i did for a computer graphics coruse'
-pubDate: 'Jul 08 2022'
+pubDate: 'Jun 04 2023'
 heroImage: '/ray_tracer.png'
 ---
 
@@ -54,7 +54,7 @@ Where h is the height of the cylinder. When mapping on to the top flat region of
 ## Intersections
 The cylinders were created by find both t values that satisfy the equation for a vector intersecting a cylinder:
 $$
-t^2\left(d_x^2+d_z^2\right)+2t\left(d_x\left(x_0-x_c\right)+d_z\left(z_0-z_c\right)\right)+\left(\left(x_0-x_c\right)^2+\left(z_0-z_c\right)^2-R^2\right)=0
+t^2\left(d_x^2+d_z^2\right)+2t\left(d_x\left(x_0-x_c\right)+d_z\left(z_0-z_c\right)\right) \\ +\left(\left(x_0-x_c\right)^2+\left(z_0-z_c\right)^2-R^2\right)=0
 $$
 If the value of t was in the imaginary plane, then the vector did not intersect the cylinder. although this is the equation for an uncapped cylinder. To find the cap of the cylinder the values of t were checked, if $t1$ was above the height of the cylinder and $t2$ was below the height of the cylinder. then the vector was intersecting the top of the cylinder, with the value of t at that point being $t2 – t1$.
 ## Normal
@@ -68,7 +68,7 @@ The y component is set to zero unless the vector is intersecting the top of the 
 ## Intersection
 The cones intersection is calculated in a similar fashion to that of the cylinder, expect for the cone will instead check its cut off points at its height limit value. This is done so one equation can be used for drawing truncated cones, normal cones and double cones. The intersection equation for the cone is:
 $$
-t^2\left(d_x^2+d_z^2-r_2d_y^2\right)+2t\left(dx\left(x_o-x_c\right)+d_z\left(zo-zc\right)+r_2d_y\left(h-y_o+y_c\right)\right)\ +\ (\left(x_0-x_c\right)^2+\left(z_0-z_c\right)^2-r_2\left(h-y_o+y_c\right)^2
+t^2\left(d_x^2+d_z^2-r_2d_y^2\right)+ \\ 2t\left(dx\left(x_o-x_c\right)+d_z\left(zo-zc\right)+ r_2d_y\left(h-y_o+y_c\right)\right)\ \\ +\ (\left(x_0-x_c\right)^2+\left(z_0-z_c\right)^2-r_2\left(h-y_o+y_c\right)^2
 $$
 Where r_2 equal to the radius over the height squared. With the same methods of finding valid values of t for where it intersects as well as if there is cap on the cone for if it is truncated or a double cone.
 ## Normal
