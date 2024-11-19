@@ -103,9 +103,11 @@ import HeaderLink from './HeaderLink.astro';
 
 <style>
 	header {
+		position: sticky;
+		top: 0;
 		margin: 0;
 		padding: 0 1em;
-		background: var(--background);
+		/* background: var(--background); */
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 	}
 	h2 {
@@ -131,6 +133,10 @@ import HeaderLink from './HeaderLink.astro';
 	
 	.mainbar {
 		display: flex;
+		top: 1;
+		backdrop-filter: blur(5px);
+		margin-left: 40px;
+		margin-right: 40px;
 	}
 
 	.sidebar {
