@@ -7,16 +7,12 @@ import tailwind from '@astrojs/tailwind';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
-import node from '@astrojs/node';
-
-import react from '@astrojs/react';
-
 import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sirlilpanda.studio',
-  integrations: [mdx(), sitemap(), tailwind(), react()],
+  integrations: [mdx(), sitemap(), tailwind()],
 
   markdown:{
       remarkPlugins: [remarkMath],
@@ -25,7 +21,7 @@ export default defineConfig({
       ]
   },
 
-  output: 'server',
+  output: "hybrid",
 
   adapter: cloudflare({
     platformProxy: {
