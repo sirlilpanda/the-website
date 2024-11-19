@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SkillCard from '../components/skillCard.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -13,13 +14,69 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header />
 		<main >
-			<h1 class="text-rose-600 pt-32 xl:pt-48 media text-4xl xl:text-7xl">Hello!!, im sirlilpanda</h1>
+			<h1 class="name pt-32 xl:pt-48 media text-4xl xl:text-7xl">Hello!!, im sirlilpanda</h1>
 			<h2 class="text-xl pb-64 xl:pb-80">developer 🧑‍💻 <span class="text-rose-500">|</span> maker 🛠️ <span class="text-rose-500">|</span> amateur chef 🍳</h2>
 			
-			<h3 class="text-center text-xl xl:text-4xl">this website is still in progress</h3>
-			<h2 class="text-center text-lg xl:text-3xl" >you can vist the old site <a class="underline" href="https://oldsite.sirlilpanda.studio">here</a></h2>
-			<h1 id="about_me"></h1>
+			<h1 id="about_me">About me</h1>
+			<p1>
+				im an insane computer engineer who has to many hobbies and projects for me to actually work on. 
+				That is just the best way to describe me you think of a hobby ive probably dabbled in it.
+			</p1>
+
+
+			<h1>skills:</h1>
+			<SkillCard title='python' description='' image='/python.png' skill_level='expert'>
+				some small projects ive done: </br>
+				- <a href="https://github.com/sirlilpanda/brute_forcing_control_systems">brute forcing control systems</a> </br>
+				- <a href="https://github.com/sirlilpanda/parts_display">parts display</a> </br>
+			</SkillCard> 
+
+			<SkillCard title='zig' description='' image='/zig.png' skill_level='intermediate to expert'>
+				some small projects ive done: 				</br>
+				- <a href="https://github.com/sirlilpanda/game-engine"> most of a game engine</a> </br>
+				- <a href="https://github.com/sirlilpanda/dft"> dft </a> </br>
+			</SkillCard>
+
+			<SkillCard title='c/cpp' description='' image='/c.png' skill_level='intermediate to expert'>
+				some small projects ive done: 				</br>
+				- <a href="https://github.com/sirlilpanda/c-results-type"> rust like result type</a> </br>
+				- <a href="https://github.com/sirlilpanda/c-comptime-json-fmt-string"> dynamic json fmt string</a> </br>
+			</SkillCard>
+
+			<SkillCard title='linux' description='' image='/linux.png' skill_level='intermediate'>
+				daily driving ubuntu on my laptop for 5 years now </br> 
+				also used arch based distro
+			</SkillCard>
+
+
 		</main>
 		<Footer />
 	</body>
 </html>
+
+
+<style>
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+	.name {
+		background : linear-gradient(-45deg, #ff0000, #ffbc7e, #fcff4e, #27ff88);
+        background-size: 400% 400%;
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+        transition: 250ms;
+		animation: gradient 2s linear infinite reverse;
+	}
+
+
+</style>
