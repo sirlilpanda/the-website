@@ -6,9 +6,9 @@
 
 
 :root {
-	--accent: rgb(72, 78, 141);
+	--accent: rgb(96, 109, 253);
 	--accent-bright: rgb(92, 95, 134);
-	--accent-dark: #000d8a;
+	--accent-dark: #001aff;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -38,9 +38,16 @@
 	font-style: normal;
 	font-display: swap;
 }
+@font-face {
+	font-family: 'Sans-Forgetica';
+	src: url('/fonts/sansForgetica.otf');
+	/* font-style: normal; */
+	/* font-display: swap; */
+}
 body {
 	font-family: 'Courier New', Courier, monospace;
 	/* font-family: 'Atkinson', sans-serif; */
+	/* font-family: Sans-Forgetica; */
 	margin: 0;
 	padding: 0;
 	background: linear-gradient(var(--gray-gradient)) no-repeat;
@@ -101,9 +108,56 @@ p {
 	margin-bottom: 1em;
 	font-size: 1em;
 }
+
 .prose p {
 	margin-bottom: 2em;
 }
+
+.prose li {
+	color: var(--text-colour);
+	/* list-style-type: circle; */
+	/* margin-left: 10px; */
+	/* padding-left: 1em; */
+	/* padding-bottom: 1em; */
+}
+
+.prose ul li {
+	/* color: var(--text-colour); */
+	list-style-type: "-";
+	margin-left: 2em;
+	padding-left: 1em;
+	color: var(--title-colour); /* Or a color you prefer */
+	/* padding-bottom: 1em; */
+}
+
+
+.prose ul li::before {
+	/* content: "-"; Insert content that looks like bullets */
+	padding-left: 2em;
+	margin-right: 1em;
+	/* color: var(--title-colour); Or a color you prefer */
+}
+
+
+.prose ol li {
+	list-style-type: decimal;
+	/* padding-left: 2em; */
+	margin-left: 5em;
+
+	color: var(--title-colour); /* Or a color you prefer */
+}
+
+.prose img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	/* width: 75%; */
+}
+
+.porse h1, h2, h3, h4, h5, h6  {
+	margin-top: 1em;
+}
+
 textarea {
 	width: 100%;
 	font-size: 16px;
@@ -143,9 +197,12 @@ hr {
 	border-top: 1px solid rgb(var(--background));
 }
 
-li {
+/* li {
 	color: var(--text-colour);
-}
+} */
+
+
+
 
 @media (max-width: 720px) {
 	body {
