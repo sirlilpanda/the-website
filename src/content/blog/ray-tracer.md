@@ -11,8 +11,11 @@ The simulation takes roughly 1 minute and 10 seconds to render a 1000x1000 pixel
 
 # Transparent & refractive object shadows
 Both transparent and refractive object cast lighter shadows based on their coefficients and colors. This was done by checking to see if the closest object intersecting the point to the light source, was either transparent or refractive and not the object itself. If the object the shadow was being cast on to be the object that it was the closest intersection, as in if the objects were the same object, the transparent or refractive would end up with a shadow on it like a regular object, this would no look correct as a clear object should not have a shadow. Once this check was done it would deice how to color the point based on the color of the transparent or refractive object. 
+
 -	If the color of the object was black, then it would multiply the color of the point with either the transparentCoeff or refractionCoeff.
+
 -	If the color was within the gray tones or white, as in if all RGB channels were equal, then the gray tone would be multiplied by the transparentCoeff or refractionCoeff and subtracted from the color at the point. The reason for this subtraction is that this would then move the value of the color at that point closer to zero, there for the color would become darker, showing that it is in shadow.
+
 -	Finally, if the color was neither black nor gray/white, the color of the transparent or refractive is be multiplied by the transparentCoeff or refractionCoeff. Then each of the color channel of the object, has the max value of the RGB channels subtracted from it. This causes the value at that point that is in shadow to have a max value of the color that is going through the transparent or refractive object.
 
 ```cpp

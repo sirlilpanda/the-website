@@ -6,12 +6,16 @@ heroImage: '/usmd.png'
 ---
 
 my journy into micro soldering started with watching a video on the [AttinyChallengeMisery](https://github.com/aspro648/KiCad/tree/master/projects/Attiny/AttinyChallengeMisery) where you must solder progressively smaller components form 0805(imperial) down to 01005. however i didnt think of trying my hand at anything like that till i saw a [video from marco reps](https://www.youtube.com/watch?v=2vpTYaDGmCs&t=1451s) soldering another soldering challenge the (uSMD)[https://github.com/arthurbenemann/usmd?tab=readme-ov-file]. this chanllenge envoles soldering:
+
 - x10 10000PF 008004 capacitors
+
 - x1 2SMD LED
+
 - x1 1k 01005 resistor
+
 - x1 10M 01005 resistor
+
 - x1 3MHZ 8-USMD 555 timer (BGA)
-- 
 
 
 needless to say that this is not the easiest thing to do. the 008004 capacitors are 0.25×0.125mm. here is an image of one next to a human hair:

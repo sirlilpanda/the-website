@@ -10,11 +10,17 @@ This game engine was developed for 2 main reasons, the first one was none of the
 
 # Language choice
 This game engine was written in zig, why? Because:
+
 -	C requires me to use some build system like cmake or just straight up makefiles. But c does allow me to do the meta programming shenanigans that I like.
+
 -	Rust would require me to fight with the borrow checker the annoying rat, but does have a nice build system and great language features that would make it trivial to implement some of the features, but I felt like this project isn’t the type of thing that would benefit from rusts amazing error handling and memory safety
+
 -	C++, I have only one word for why I wont use it “overloading”
+
 -	Python, i have a lot of experience with this language but I believe it has little to no support for low level OpenGL calls, as well as being slow
+
 -	Java, as much as I have come to respect java for the language that it, I still despise OOP with a passion even if it makes complete sense for OpenGL
+
 -	Odin a very cool language for computer graphics with inbuilt quaternion types and matrixes, with amazing support for graphic libraries its just a little too new for me, having to compile it from scratch, but might be an idea to use in the future (but I still don’t like its use of the proc keyword for functions, a procedure is something completely different to a function)
 
 So with why I did pick zig over basically every other language. Well the zig comptime keyword allows me to do the fun metaprogramming shenanigans that I love. As well as the zig having the best mascot (maybe except for V lang). zig also has some really cool features like allocators arnt global and you must pass them when every trying to add to the heap (great for embedded), it has oop in a sense but no inheritance (v tables arnt real and cant hurt me). As well as zig having quite honestly the best thing a very clean abstraction on SIMD instruction with the Vector type. Zig also has this amazing unit test system build into the language so you don’t have to have another dir called tests that just mirrors the main one, instead you can just write all your tests at the bottom of the file. All of these combined with a little personal bias made me picked zig.
