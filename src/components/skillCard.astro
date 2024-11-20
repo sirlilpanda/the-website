@@ -28,10 +28,6 @@ const { title, description, image, skill_level, } = Astro.props;
 
 <style>
 
-    :root {
-        --skill-card-colour : rgb(42, 42, 42);
-    }
-
     .box > .grid_wrapper {
         display: grid;
         grid-template-columns: auto auto auto;
@@ -106,7 +102,6 @@ const { title, description, image, skill_level, } = Astro.props;
         text-align: center;
         min-width: fit-content;
         min-height: fit-content;
-        max-height: fit-content;
         color: #000000;
         background: linear-gradient(-24deg, #00ff00, #94ff7e, #acff4e, #27ff88);
         background-size: 400% 400%;
