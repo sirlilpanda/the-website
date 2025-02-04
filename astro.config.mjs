@@ -12,6 +12,9 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sirlilpanda.studio',
+  redirects: {
+    'linkedin' : 'https://www.linkedin.com/in/logan-henderson-529865268/',
+  },
   integrations: [mdx(), sitemap(), tailwind()],
 
   markdown:{
