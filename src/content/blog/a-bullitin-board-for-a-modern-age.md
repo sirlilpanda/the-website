@@ -51,10 +51,10 @@ However, when i do implement this i will be sure to provide an update on how it 
 
 
 ### Some additional reading
-https://www.thethirdspacecollective.com/about-3
-https://en.wikipedia.org/wiki/Bulletin_board
-https://www.youtube.com/watch?v=I18ifd8I6P8
-https://www.youtube.com/watch?v=ItXCjhlGd7c
+- https://www.thethirdspacecollective.com/about-3
+- https://en.wikipedia.org/wiki/Bulletin_board
+- https://www.youtube.com/watch?v=I18ifd8I6P8
+- https://www.youtube.com/watch?v=ItXCjhlGd7c
 
 
 
